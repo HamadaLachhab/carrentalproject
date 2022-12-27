@@ -1,34 +1,30 @@
 ﻿using EXAM_PROJET.Models.User;
-using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel;
 
 namespace EXAM_PROJET.Models
 {
-    public class Voiture
+    public class VoitureModel
     {
-        [Key]
-        public int VoitureId { get; set; }
-        [Required(ErrorMessage = "Provide Price")]
+        [Required]
         public string PrixParJour { get; set; }
 
         [Required(ErrorMessage = "Provide Year")]
         public string Annee { get; set; }
 
         [Required(ErrorMessage = "Provide Mileage")]
-       
+   
         public string Kilometrage { get; set; }
 
-        public Marque Marque { get; set; }
 
-        [Range(1, int.MaxValue, ErrorMessage = "Select a Make")]
+
+        [Required]
         public int MarqueId { get; set; }
+        [Required]
+        public int ModeleId { get; set; }
 
-        public Modele Modele { get; set; }
 
-        [Range(1, int.MaxValue, ErrorMessage = "Select a Model")]
-        [DefaultValue("99")]
-        Agence Agence { get; set; }
-       
+        [Required]
         public string Couleur { get; set; }
 
         public int Rating { get; set; }
@@ -37,12 +33,11 @@ namespace EXAM_PROJET.Models
         [DefaultValue("Description")]
         public string Description { get; set; }
         [DefaultValue("/path")]
+
         public string ImagePath { get; set; }
 
-        public ApplicationUser ApplicationUser { get; set; }
+        public string ProprietaireId { get; set; }
 
         public bool EstDisponible { get; set; }
-        
-        public virtual ICollection<Demande> Demandes { get; set; }
     }
 }

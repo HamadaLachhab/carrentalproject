@@ -1,5 +1,6 @@
 ﻿using EXAM_PROJET.Data;
 using EXAM_PROJET.Models;
+using Microsoft.EntityFrameworkCore;
 using System.Runtime.Serialization;
 
 namespace EXAM_PROJET.Services
@@ -13,31 +14,32 @@ namespace EXAM_PROJET.Services
             this._context = context;
         }
 
-        public Marque AddMarque(MarqueModel marqueModel)
+        public async Task<Marque> AddMarque(MarqueModel marqueModel)
         {
             var marque = new Marque() { NomMarque = marqueModel.NomMarque };
-            _context.Marques.Add(marque);
-            _context.SaveChanges();
+           await  _context.Marques.AddAsync(marque);
+            await _context.SaveChangesAsync();
             return marque;
         }
 
-        public void DeleteMarque(int id)
+        public async Task<bool> DeleteMarque(int id)
         {
-            var marque = _context.Marques.Where(e => e.MarqueId == id).FirstOrDefault();
-            _context.Marques.Remove(marque);
-            _context.SaveChanges();
+            var marque =  await _context.Marques.FindAsync(id);
+            if (marque is null) return false;
+             await _context.SaveChangesAsync();
+            return true;
 
 
         }
 
-        public ICollection<Marque> GetAllMarque()
+        public async Task<ICollection<Marque>> GetAllMarque()
         {
-            return _context.Marques.OrderBy(p => p.MarqueId).ToList();
+            return  await _context.Marques.ToListAsync();
         }
 
-        public Marque GetMarque(int id)
+        public async Task<Marque> GetMarque(int id)
         {
-            return _context.Marques.Where(e => e.MarqueId == id).FirstOrDefault();
+            return await _context.Marques.FirstOrDefaultAsync(m => m.MarqueId == id);
         }
 
         public bool UpdateMarque(MarqueModel marque,int id)

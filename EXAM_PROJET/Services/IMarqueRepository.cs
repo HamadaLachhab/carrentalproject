@@ -4,10 +4,10 @@ namespace EXAM_PROJET.Services
 {
     public interface IMarqueRepository
     {
-        public ICollection<Marque> GetAllMarque();
-        public Marque GetMarque(int id);
-        public Marque AddMarque(MarqueModel marqueModel);
-        public void DeleteMarque(int id);   
+        public Task<ICollection<Marque>> GetAllMarque();
+        public Task<Marque> GetMarque(int id);
+        public Task<Marque> AddMarque(MarqueModel marqueModel);
+        public Task<bool> DeleteMarque(int id);   
         public bool UpdateMarque(MarqueModel marque,int id);
     }
 }
