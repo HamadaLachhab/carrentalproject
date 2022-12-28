@@ -59,7 +59,7 @@ namespace EXAM_PROJET.Controllers
                 Couleur=model.Couleur,
                 Rating=model.Rating,
                 ImagePath=model.ImagePath,
-                ApplicationUser=myprop,
+                ProprietaireId=model.ProprietaireId,
                 EstDisponible = model.EstDisponible,
                 Immatriculation=model.Immatriculation,
                 Description=model.Description

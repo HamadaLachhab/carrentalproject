@@ -16,17 +16,17 @@ namespace EXAM_PROJET.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<Demande>()
-                .HasKey(e => new { e.VoitureId, e.Id });
-            modelBuilder.Entity<Demande>()
-                .HasOne(b => b.Voiture)
-                .WithMany(c => c.Demandes)
-                .HasForeignKey(e => e.VoitureId);
+            /*  modelBuilder.Entity<Demande>()
+                  .HasKey(e => new { e.VoitureId, e.Id });
+              modelBuilder.Entity<Demande>()
+                  .HasOne(b => b.Voiture)
+                  .WithMany(c => c.Demandes)
+                  .HasForeignKey(e => e.VoitureId);
 
-            modelBuilder.Entity<Demande>()
-                .HasOne(b => b.ApplicationUser)
-                .WithMany(c => c.Demandes)
-                .HasForeignKey(e => e.Id);
+              modelBuilder.Entity<Demande>()
+                  .HasOne(b => b.ApplicationUser)
+                  .WithMany(c => c.Demandes)
+                  .HasForeignKey(e => e.Id);*/
 
 
         }
@@ -35,7 +35,6 @@ namespace EXAM_PROJET.Data
         public DbSet<Marque> Marques { get; set; }
         public DbSet<Modele> Modeles { get; set; }
         public DbSet<Favori> Favoris { get; set; }
-        public DbSet<Demande> Demandes { get; set; }
-        public DbSet<Agence> Agences { get; set; } 
+        public DbSet<Demande> Demandes { get; set; } 
     }
 }

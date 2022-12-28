@@ -4,7 +4,7 @@
 
 namespace EXAM_PROJET.Migrations
 {
-    public partial class addFavoris : Migration
+    public partial class Favoris : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

@@ -37,6 +37,7 @@ namespace EXAM_PROJET.Services.Auth
                 Adresse=model.Adresse,
                 PhoneNumber = model.Telephone,
                 IsAdmin = false,
+                isAgence=model.isAgence
             };
             var result = await _userManager.CreateAsync(user, model.Password);
             if (!result.Succeeded)

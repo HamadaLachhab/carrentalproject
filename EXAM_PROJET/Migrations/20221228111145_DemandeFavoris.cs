@@ -5,15 +5,17 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace EXAM_PROJET.Migrations
 {
-    public partial class addDemande : Migration
+    public partial class DemandeFavoris : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Demandes",
+                name: "Demande",
                 columns: table => new
                 {
-                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    locataireId = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     VoitureId = table.Column<int>(type: "int", nullable: false),
                     DateDebut = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DateFin = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -22,31 +24,25 @@ namespace EXAM_PROJET.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Demandes", x => new { x.VoitureId, x.Id });
+                    table.PrimaryKey("PK_Demande", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Demandes_AspNetUsers_Id",
-                        column: x => x.Id,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Demandes_Voitures_VoitureId",
+                        name: "FK_Demande_Voitures_VoitureId",
                         column: x => x.VoitureId,
                         principalTable: "Voitures",
                         principalColumn: "VoitureId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Demandes_Id",
-                table: "Demandes",
-                column: "Id");
+                name: "IX_Demande_VoitureId",
+                table: "Demande",
+                column: "VoitureId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Demandes");
+                name: "Demande");
         }
     }
 }

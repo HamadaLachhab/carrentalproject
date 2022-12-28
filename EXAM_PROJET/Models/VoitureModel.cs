@@ -7,7 +7,7 @@ namespace EXAM_PROJET.Models
     public class VoitureModel
     {
         [Required]
-        public string PrixParJour { get; set; }
+        public double PrixParJour { get; set; }
 
         [Required(ErrorMessage = "Provide Year")]
         public string Annee { get; set; }

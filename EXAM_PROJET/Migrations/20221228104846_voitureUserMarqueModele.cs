@@ -4,10 +4,17 @@
 
 namespace EXAM_PROJET.Migrations
 {
-    public partial class CreatevoitureModeleMarque : Migration
+    public partial class voitureUserMarqueModele : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.AddColumn<bool>(
+                name: "isAgence",
+                table: "AspNetUsers",
+                type: "bit",
+                nullable: false,
+                defaultValue: false);
+
             migrationBuilder.CreateTable(
                 name: "Marques",
                 columns: table => new
@@ -47,27 +54,25 @@ namespace EXAM_PROJET.Migrations
                 {
                     VoitureId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    PrixParJour = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PrixParJour = table.Column<double>(type: "float", nullable: false),
                     Annee = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Kilometrage = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     MarqueId = table.Column<int>(type: "int", nullable: false),
                     ModeleId = table.Column<int>(type: "int", nullable: false),
-                    ModelID = table.Column<int>(type: "int", nullable: false),
-                    ProprietaireId = table.Column<int>(type: "int", nullable: false),
                     Couleur = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Rating = table.Column<int>(type: "int", nullable: false),
                     Immatriculation = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ImagePath = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ApplicationUserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ProprietaireId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     EstDisponible = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Voitures", x => x.VoitureId);
                     table.ForeignKey(
-                        name: "FK_Voitures_AspNetUsers_ApplicationUserId",
-                        column: x => x.ApplicationUserId,
+                        name: "FK_Voitures_AspNetUsers_ProprietaireId",
+                        column: x => x.ProprietaireId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -91,11 +96,6 @@ namespace EXAM_PROJET.Migrations
                 column: "MarqueId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Voitures_ApplicationUserId",
-                table: "Voitures",
-                column: "ApplicationUserId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Voitures_MarqueId",
                 table: "Voitures",
                 column: "MarqueId");
@@ -104,6 +104,11 @@ namespace EXAM_PROJET.Migrations
                 name: "IX_Voitures_ModeleId",
                 table: "Voitures",
                 column: "ModeleId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Voitures_ProprietaireId",
+                table: "Voitures",
+                column: "ProprietaireId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -116,6 +121,10 @@ namespace EXAM_PROJET.Migrations
 
             migrationBuilder.DropTable(
                 name: "Marques");
+
+            migrationBuilder.DropColumn(
+                name: "isAgence",
+                table: "AspNetUsers");
         }
     }
 }

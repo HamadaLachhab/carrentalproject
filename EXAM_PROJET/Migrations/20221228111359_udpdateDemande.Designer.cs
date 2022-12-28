@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EXAM_PROJET.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221221154707_addAgence")]
-    partial class addAgence
+    [Migration("20221228111359_udpdateDemande")]
+    partial class udpdateDemande
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -24,30 +24,13 @@ namespace EXAM_PROJET.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("EXAM_PROJET.Models.Agence", b =>
+            modelBuilder.Entity("EXAM_PROJET.Models.Demande", b =>
                 {
-                    b.Property<int>("AgenceId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AgenceId"), 1L, 1);
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("AgenceId");
-
-                    b.ToTable("Agences");
-                });
-
-            modelBuilder.Entity("EXAM_PROJET.Models.Demande", b =>
-                {
-                    b.Property<int>("VoitureId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<DateTime>("DateDebut")
                         .HasColumnType("datetime2");
@@ -58,35 +41,22 @@ namespace EXAM_PROJET.Migrations
                     b.Property<double>("PrixTotal")
                         .HasColumnType("float");
 
+                    b.Property<int>("VoitureId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("locataireId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("statut")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("VoitureId", "Id");
-
-                    b.HasIndex("Id");
-
-                    b.ToTable("Demandes");
-                });
-
-            modelBuilder.Entity("EXAM_PROJET.Models.Favori", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("VoitureId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
-                    b.ToTable("Favoris");
+                    b.HasIndex("VoitureId");
+
+                    b.ToTable("Demandes");
                 });
 
             modelBuilder.Entity("EXAM_PROJET.Models.Marque", b =>
@@ -196,6 +166,9 @@ namespace EXAM_PROJET.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("isAgence")
+                        .HasColumnType("bit");
+
                     b.HasKey("Id");
 
                     b.HasIndex("NormalizedEmail")
@@ -217,16 +190,9 @@ namespace EXAM_PROJET.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("VoitureId"), 1L, 1);
 
-                    b.Property<int?>("AgenceId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Annee")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ApplicationUserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Couleur")
                         .IsRequired()
@@ -257,22 +223,23 @@ namespace EXAM_PROJET.Migrations
                     b.Property<int>("ModeleId")
                         .HasColumnType("int");
 
-                    b.Property<string>("PrixParJour")
+                    b.Property<double>("PrixParJour")
+                        .HasColumnType("float");
+
+                    b.Property<string>("ProprietaireId")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("Rating")
                         .HasColumnType("int");
 
                     b.HasKey("VoitureId");
 
-                    b.HasIndex("AgenceId");
-
-                    b.HasIndex("ApplicationUserId");
-
                     b.HasIndex("MarqueId");
 
                     b.HasIndex("ModeleId");
+
+                    b.HasIndex("ProprietaireId");
 
                     b.ToTable("Voitures");
                 });
@@ -412,19 +379,11 @@ namespace EXAM_PROJET.Migrations
 
             modelBuilder.Entity("EXAM_PROJET.Models.Demande", b =>
                 {
-                    b.HasOne("EXAM_PROJET.Models.User.ApplicationUser", "ApplicationUser")
-                        .WithMany("Demandes")
-                        .HasForeignKey("Id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("EXAM_PROJET.Models.Voiture", "Voiture")
                         .WithMany("Demandes")
                         .HasForeignKey("VoitureId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("ApplicationUser");
 
                     b.Navigation("Voiture");
                 });
@@ -442,16 +401,6 @@ namespace EXAM_PROJET.Migrations
 
             modelBuilder.Entity("EXAM_PROJET.Models.Voiture", b =>
                 {
-                    b.HasOne("EXAM_PROJET.Models.Agence", null)
-                        .WithMany("Voitures")
-                        .HasForeignKey("AgenceId");
-
-                    b.HasOne("EXAM_PROJET.Models.User.ApplicationUser", "ApplicationUser")
-                        .WithMany()
-                        .HasForeignKey("ApplicationUserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("EXAM_PROJET.Models.Marque", "Marque")
                         .WithMany("Voitures")
                         .HasForeignKey("MarqueId")
@@ -464,11 +413,17 @@ namespace EXAM_PROJET.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("ApplicationUser");
+                    b.HasOne("EXAM_PROJET.Models.User.ApplicationUser", "Proprietaire")
+                        .WithMany("Voitures")
+                        .HasForeignKey("ProprietaireId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Marque");
 
                     b.Navigation("Modele");
+
+                    b.Navigation("Proprietaire");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -522,11 +477,6 @@ namespace EXAM_PROJET.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("EXAM_PROJET.Models.Agence", b =>
-                {
-                    b.Navigation("Voitures");
-                });
-
             modelBuilder.Entity("EXAM_PROJET.Models.Marque", b =>
                 {
                     b.Navigation("Modeles");
@@ -541,7 +491,7 @@ namespace EXAM_PROJET.Migrations
 
             modelBuilder.Entity("EXAM_PROJET.Models.User.ApplicationUser", b =>
                 {
-                    b.Navigation("Demandes");
+                    b.Navigation("Voitures");
                 });
 
             modelBuilder.Entity("EXAM_PROJET.Models.Voiture", b =>
