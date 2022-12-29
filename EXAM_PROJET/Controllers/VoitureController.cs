@@ -1,10 +1,12 @@
 ﻿using EXAM_PROJET.Data;
 using EXAM_PROJET.Models;
 using EXAM_PROJET.Models.User;
+using EXAM_PROJET.Services;
 using EXAM_PROJET.Services.Auth;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using IHostingEnvironment = Microsoft.AspNetCore.Hosting.IHostingEnvironment;
 
 namespace EXAM_PROJET.Controllers
 {
@@ -13,13 +15,17 @@ namespace EXAM_PROJET.Controllers
     public class VoitureController:ControllerBase
     {
         private readonly ApplicationDbContext _context;
+        private readonly IHostingEnvironment _environment;
+        private readonly IVoitureRepository _voitureRepository;
    
         private readonly UserManager<ApplicationUser> _userManager;
-        public VoitureController(ApplicationDbContext context,UserManager<ApplicationUser> userManager)
+        public VoitureController(ApplicationDbContext context,UserManager<ApplicationUser> userManager,IHostingEnvironment environment,IVoitureRepository voitureRepository)
         {
             _context = context;
                  
                     _userManager = userManager;
+            _environment = environment;
+            _voitureRepository = voitureRepository;
         }
         [HttpGet]
         public async Task<IActionResult> Get()
@@ -27,8 +33,63 @@ namespace EXAM_PROJET.Controllers
             var marque = await _context.Voitures.ToListAsync();
             return Ok(marque);
         }
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Put(int id, [FromForm] VoitureModel model,IFormFile? image)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+             var p = await  _voitureRepository.GetVoitureById(id);
+            if (p == null) return BadRequest("id voiture n'exist pas");
+
+            var product = await _context.Marques.FirstOrDefaultAsync(m => m.MarqueId == model.MarqueId);
+            if (product == null)
+                return BadRequest("id marque n'exist pas");
+
+            var Modele = await _context.Modeles.FirstOrDefaultAsync(m => m.ModeleId == model.ModeleId);
+            if (product == null)
+                return BadRequest("id modele n'exist pas");
+
+            var mymodele = await _context.Modeles.FirstOrDefaultAsync(m => m.ModeleId == model.ModeleId);
+            string pathImage = String.Empty;
+            if(image is not null) { 
+             pathImage = Path.Combine(_environment.WebRootPath, "images", image.FileName);
+
+            var streamImage = new FileStream(pathImage, FileMode.Append);
+            image.CopyTo(streamImage);
+            }
+
+            p.Annee = model.Annee;
+                p.PrixParJour = model.PrixParJour;
+                p.Kilometrage = model.Kilometrage;
+                p.MarqueId = model.MarqueId;
+                p.Modele = mymodele;
+                p.Couleur = model.Couleur;
+                p.Rating = model.Rating;
+                p.ImagePath = image is not null ? pathImage : model.ImagePath;
+                p.ProprietaireId = model.ProprietaireId;
+                p.EstDisponible = model.EstDisponible;
+                p.Immatriculation = model.Immatriculation;
+            p.Description = model.Description;
+
+            await _context.SaveChangesAsync();
+            return Ok(p);
+
+
+
+
+
+        }
+
+
+
+
+
+
+
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] VoitureModel model)
+        public async Task<IActionResult> Post([FromForm] VoitureModel model,IFormFile image)
         {
 
             if (!ModelState.IsValid)
@@ -50,6 +111,11 @@ namespace EXAM_PROJET.Controllers
                 return BadRequest("id user n'exist pas ");
             ApplicationUser myprop = await _userManager.FindByIdAsync(model.ProprietaireId);
 
+            var pathImage = Path.Combine(_environment.WebRootPath, "images", image.FileName);
+
+            var streamImage = new FileStream(pathImage,FileMode.Append);
+            image.CopyTo(streamImage);
+            
             Voiture m = new Voiture() {
                 Annee=model.Annee,
                 PrixParJour=model.PrixParJour,
@@ -58,13 +124,14 @@ namespace EXAM_PROJET.Controllers
                 Modele=mymodele,
                 Couleur=model.Couleur,
                 Rating=model.Rating,
-                ImagePath=model.ImagePath,
+                ImagePath=pathImage,
                 ProprietaireId=model.ProprietaireId,
                 EstDisponible = model.EstDisponible,
                 Immatriculation=model.Immatriculation,
                 Description=model.Description
 
             };
+           
              _context.Add(m);
             await _context.SaveChangesAsync();
             return Ok( m);

@@ -266,3 +266,4 @@ C:\Users\Lee\Documents\C# projects\EXAM_PROJET\EXAM_PROJET\obj\Debug\net6.0\refi
 C:\Users\Lee\Documents\C# projects\EXAM_PROJET\EXAM_PROJET\obj\Debug\net6.0\EXAM_PROJET.pdb
 C:\Users\Lee\Documents\C# projects\EXAM_PROJET\EXAM_PROJET\obj\Debug\net6.0\EXAM_PROJET.genruntimeconfig.cache
 C:\Users\Lee\Documents\C# projects\EXAM_PROJET\EXAM_PROJET\obj\Debug\net6.0\ref\EXAM_PROJET.dll
+C:\Users\Lee\Documents\C# projects\EXAM_PROJET\EXAM_PROJET\bin\Debug\net6.0\EXAM_PROJET.staticwebassets.runtime.json

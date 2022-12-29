@@ -24,17 +24,17 @@ namespace EXAM_PROJET.Models
         public int ModeleId { get; set; }
 
 
-        [Required]
-        public string Couleur { get; set; }
+        
+        public string? Couleur { get; set; }
 
         public int Rating { get; set; }
 
         public string Immatriculation { get; set; }
         [DefaultValue("Description")]
         public string Description { get; set; }
-        [DefaultValue("/path")]
+       
 
-        public string ImagePath { get; set; }
+        public string? ImagePath { get; set; }
 
         public string ProprietaireId { get; set; }
 

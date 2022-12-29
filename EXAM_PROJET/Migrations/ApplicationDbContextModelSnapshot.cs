@@ -54,7 +54,7 @@ namespace EXAM_PROJET.Migrations
 
                     b.HasIndex("VoitureId");
 
-                    b.ToTable("Demandes");
+                    b.ToTable("Demandes", (string)null);
                 });
 
             modelBuilder.Entity("EXAM_PROJET.Models.Favori", b =>
@@ -74,7 +74,7 @@ namespace EXAM_PROJET.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Favoris");
+                    b.ToTable("Favoris", (string)null);
                 });
 
             modelBuilder.Entity("EXAM_PROJET.Models.Marque", b =>
@@ -91,7 +91,7 @@ namespace EXAM_PROJET.Migrations
 
                     b.HasKey("MarqueId");
 
-                    b.ToTable("Marques");
+                    b.ToTable("Marques", (string)null);
                 });
 
             modelBuilder.Entity("EXAM_PROJET.Models.Modele", b =>
@@ -113,7 +113,7 @@ namespace EXAM_PROJET.Migrations
 
                     b.HasIndex("MarqueId");
 
-                    b.ToTable("Modeles");
+                    b.ToTable("Modeles", (string)null);
                 });
 
             modelBuilder.Entity("EXAM_PROJET.Models.User.ApplicationUser", b =>
@@ -259,7 +259,7 @@ namespace EXAM_PROJET.Migrations
 
                     b.HasIndex("ProprietaireId");
 
-                    b.ToTable("Voitures");
+                    b.ToTable("Voitures", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

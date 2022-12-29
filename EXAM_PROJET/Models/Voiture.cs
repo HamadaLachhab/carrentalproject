@@ -35,6 +35,8 @@ namespace EXAM_PROJET.Models
         [DefaultValue("/path")]
         public string ImagePath { get; set; }
 
+        
+
         public ApplicationUser Proprietaire { get; set; }
         public string ProprietaireId { get; set; }
 

@@ -1,11 +1,54 @@
 {
   "Version": 1,
-  "Hash": "teE4VP3H3uA+4PAqCgSufksu9lhpx0DX2QLmzlO0VYk=",
+  "Hash": "7LttlXMeD3Yu9mYvduNTaJbVxvH4/quVjQpmwcAfrbE=",
   "Source": "EXAM_PROJET",
   "BasePath": "_content/EXAM_PROJET",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
-  "Assets": []
+  "DiscoveryPatterns": [
+    {
+      "Name": "EXAM_PROJET\\wwwroot",
+      "Source": "EXAM_PROJET",
+      "ContentRoot": "C:\\Users\\Lee\\Documents\\C# projects\\EXAM_PROJET\\EXAM_PROJET\\wwwroot\\",
+      "BasePath": "_content/EXAM_PROJET",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\Lee\\Documents\\C# projects\\EXAM_PROJET\\EXAM_PROJET\\wwwroot\\images\\logo.jpg",
+      "SourceId": "EXAM_PROJET",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Lee\\Documents\\C# projects\\EXAM_PROJET\\EXAM_PROJET\\wwwroot\\",
+      "BasePath": "_content/EXAM_PROJET",
+      "RelativePath": "images/logo.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\logo.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Lee\\Documents\\C# projects\\EXAM_PROJET\\EXAM_PROJET\\wwwroot\\images\\marnissi.png",
+      "SourceId": "EXAM_PROJET",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Lee\\Documents\\C# projects\\EXAM_PROJET\\EXAM_PROJET\\wwwroot\\",
+      "BasePath": "_content/EXAM_PROJET",
+      "RelativePath": "images/marnissi.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\marnissi.png"
+    }
+  ]
 }
