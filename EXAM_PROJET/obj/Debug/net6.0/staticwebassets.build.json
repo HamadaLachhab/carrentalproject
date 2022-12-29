@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "7LttlXMeD3Yu9mYvduNTaJbVxvH4/quVjQpmwcAfrbE=",
+  "Hash": "cbfZr3GBVsMkSMOM7GZBbI0OKT31hE3iJ1hj2l9iJ0g=",
   "Source": "EXAM_PROJET",
   "BasePath": "_content/EXAM_PROJET",
   "Mode": "Default",
@@ -16,6 +16,23 @@
     }
   ],
   "Assets": [
+    {
+      "Identity": "C:\\Users\\Lee\\Documents\\C# projects\\EXAM_PROJET\\EXAM_PROJET\\wwwroot\\images\\5_reconnection_et_voire_privilege.jpg",
+      "SourceId": "EXAM_PROJET",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Lee\\Documents\\C# projects\\EXAM_PROJET\\EXAM_PROJET\\wwwroot\\",
+      "BasePath": "_content/EXAM_PROJET",
+      "RelativePath": "images/5_reconnection_et_voire_privilege.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\5_reconnection_et_voire_privilege.jpg"
+    },
     {
       "Identity": "C:\\Users\\Lee\\Documents\\C# projects\\EXAM_PROJET\\EXAM_PROJET\\wwwroot\\images\\logo.jpg",
       "SourceId": "EXAM_PROJET",
@@ -49,6 +66,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\marnissi.png"
+    },
+    {
+      "Identity": "C:\\Users\\Lee\\Documents\\C# projects\\EXAM_PROJET\\EXAM_PROJET\\wwwroot\\images\\user_1.jpg",
+      "SourceId": "EXAM_PROJET",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Lee\\Documents\\C# projects\\EXAM_PROJET\\EXAM_PROJET\\wwwroot\\",
+      "BasePath": "_content/EXAM_PROJET",
+      "RelativePath": "images/user_1.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\user_1.jpg"
     }
   ]
 }

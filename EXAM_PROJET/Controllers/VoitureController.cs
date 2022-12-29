@@ -33,6 +33,30 @@ namespace EXAM_PROJET.Controllers
             var marque = await _context.Voitures.ToListAsync();
             return Ok(marque);
         }
+        [HttpGet("valid")]
+        public async Task<IActionResult> GetValid()
+        {
+            var marque = await _voitureRepository.GetVoitureNonBlacklisted();
+            return Ok(marque);
+        }
+        [HttpGet("{id}")]
+        public async Task<IActionResult> Get(int id)
+        {
+            var product = await _context.Voitures.FindAsync(id);
+            if (product == null)
+                return BadRequest("voiture id n'exist pas ");
+            return Ok(product);
+
+        }
+        [HttpGet("user/{id}")]
+
+
+
+
+
+
+
+
         [HttpPut("{id}")]
         public async Task<IActionResult> Put(int id, [FromForm] VoitureModel model,IFormFile? image)
         {
@@ -53,8 +77,9 @@ namespace EXAM_PROJET.Controllers
 
             var mymodele = await _context.Modeles.FirstOrDefaultAsync(m => m.ModeleId == model.ModeleId);
             string pathImage = String.Empty;
-            if(image is not null) { 
-             pathImage = Path.Combine(_environment.WebRootPath, "images", image.FileName);
+            if(image is not null) {
+                System.IO.File.Delete(model.ImagePath);
+                pathImage = Path.Combine(_environment.WebRootPath, "images", image.FileName);
 
             var streamImage = new FileStream(pathImage, FileMode.Append);
             image.CopyTo(streamImage);
@@ -136,5 +161,23 @@ namespace EXAM_PROJET.Controllers
             await _context.SaveChangesAsync();
             return Ok( m);
         }
+        [HttpDelete]
+        public async Task<IActionResult> Delete(int id)
+        {
+
+            var modele = await _context.Voitures.FindAsync(id);
+            if (modele is null) return BadRequest("id voiture n'exist pas ");
+            System.IO.File.Delete(modele.ImagePath);
+            _context.Voitures.Remove(modele);
+            await _context.SaveChangesAsync();
+
+            return Ok(true);
+        }
+
+
+
+
+
+
     }
 }
