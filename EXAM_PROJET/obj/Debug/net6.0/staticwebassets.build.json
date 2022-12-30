@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "PmyceQiLsO9A4pwlS0X0HPnMZ8C3s9JETR8mytTnPW4=",
+  "Hash": "P+5YevnIVSXx6B2z+g3FVonTnVStkYSI+1PDMLpIMIE=",
   "Source": "EXAM_PROJET",
   "BasePath": "_content/EXAM_PROJET",
   "Mode": "Default",
@@ -16,23 +16,6 @@
     }
   ],
   "Assets": [
-    {
-      "Identity": "C:\\Users\\Lee\\Documents\\C# projects\\EXAM_PROJET\\EXAM_PROJET\\wwwroot\\images\\2.jpg",
-      "SourceId": "EXAM_PROJET",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Lee\\Documents\\C# projects\\EXAM_PROJET\\EXAM_PROJET\\wwwroot\\",
-      "BasePath": "_content/EXAM_PROJET",
-      "RelativePath": "images/2.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\2.jpg"
-    },
     {
       "Identity": "C:\\Users\\Lee\\Documents\\C# projects\\EXAM_PROJET\\EXAM_PROJET\\wwwroot\\images\\4.jpg",
       "SourceId": "EXAM_PROJET",

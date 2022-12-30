@@ -33,13 +33,15 @@ namespace EXAM_PROJET.Services
                
         }
 
-        public async Task<List<Voiture>> GetVoitures()
+        public async Task<List<OffreVoitureModel>> GetVoitures()
         {
-            List<int> list =  await _context.Offres.Select(o => o.voitureId).ToListAsync();
-            List<Voiture> listvoiture = new List<Voiture>();
+            List<Offre> list = await _context.Offres.ToListAsync();
+            List<OffreVoitureModel> listvoiture = new List<OffreVoitureModel>();
             foreach ( var i in list)
             {
-                listvoiture.Add(await _voitureRepository.GetVoitureById(i));
+                Voiture v = await _voitureRepository.GetVoitureById(i.voitureId);
+                OffreVoitureModel mo = new OffreVoitureModel() { Voiture = v, Montant = i.montant };
+                listvoiture.Add(mo);
             }
             return listvoiture;
         }

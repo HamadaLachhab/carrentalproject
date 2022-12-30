@@ -47,7 +47,7 @@ namespace EXAM_PROJET.Controllers
         public async Task<IActionResult> Delete(int id)
         {
 
-            if (await _offreRepository.exist(id))
+            if (!await _offreRepository.exist(id))
             {
                 return BadRequest("cet voiture n'est pas en offre");
             }
