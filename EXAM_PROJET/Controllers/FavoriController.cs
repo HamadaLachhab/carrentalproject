@@ -1,8 +1,10 @@
 ﻿using EXAM_PROJET.Models;
 using EXAM_PROJET.Models.User;
 using EXAM_PROJET.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 
 namespace EXAM_PROJET.Controllers
 {
@@ -13,12 +15,14 @@ namespace EXAM_PROJET.Controllers
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly IFavoriRepository _favoriRepository;
         private readonly IVoitureRepository _voitureRepository;
+
         public FavoriController(UserManager<ApplicationUser> userManager, IFavoriRepository favoriRepository, IVoitureRepository voitureRepository)
         {
             _userManager = userManager;
             _favoriRepository = favoriRepository;
             _voitureRepository = voitureRepository;
         }
+        
 
         [HttpGet]
         public async Task<IActionResult> Get()
@@ -26,6 +30,8 @@ namespace EXAM_PROJET.Controllers
             var modele = await _favoriRepository.getFavoris();
             return Ok(modele);
         }
+        [Authorize(Roles = "Admin,Locataire,Proprietaire")]
+
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(string id)
         {
@@ -49,6 +55,8 @@ namespace EXAM_PROJET.Controllers
                  
             return Ok(product);
         }
+        [Authorize(Roles = "Admin,Locataire,Proprietaire")]
+
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] FavoriModel model)
         {

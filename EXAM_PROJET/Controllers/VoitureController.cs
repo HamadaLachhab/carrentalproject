@@ -3,9 +3,11 @@ using EXAM_PROJET.Models;
 using EXAM_PROJET.Models.User;
 using EXAM_PROJET.Services;
 using EXAM_PROJET.Services.Auth;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Data;
 using IHostingEnvironment = Microsoft.AspNetCore.Hosting.IHostingEnvironment;
 
 namespace EXAM_PROJET.Controllers
@@ -19,13 +21,19 @@ namespace EXAM_PROJET.Controllers
         private readonly IVoitureRepository _voitureRepository;
    
         private readonly UserManager<ApplicationUser> _userManager;
-        public VoitureController(ApplicationDbContext context,UserManager<ApplicationUser> userManager,IHostingEnvironment environment,IVoitureRepository voitureRepository)
+        private readonly IDemandeRepository _dem;
+        private readonly IFavoriRepository _fav;
+        private readonly IOffreRepository _off;
+        public VoitureController(ApplicationDbContext context,UserManager<ApplicationUser> userManager,IHostingEnvironment environment,IVoitureRepository voitureRepository,IOffreRepository off,IDemandeRepository dem,IFavoriRepository fav)
         {
             _context = context;
                  
                     _userManager = userManager;
             _environment = environment;
             _voitureRepository = voitureRepository;
+            _off = off;
+            _dem = dem;
+            _fav = fav;
         }
         [HttpGet]
         public async Task<IActionResult> Get()
@@ -60,6 +68,7 @@ namespace EXAM_PROJET.Controllers
 
 
 
+        [Authorize(Roles = "Admin,Proprietaire")]
 
         [HttpPut("{id}")]
         public async Task<IActionResult> Put(int id, [FromForm] VoitureModel model,IFormFile? image)
@@ -116,7 +125,7 @@ namespace EXAM_PROJET.Controllers
 
 
 
-
+        [Authorize(Roles = "Admin,Proprietaire")]
         [HttpPost]
         public async Task<IActionResult> Post([FromForm] VoitureModel model,IFormFile image)
         {
@@ -166,12 +175,18 @@ namespace EXAM_PROJET.Controllers
             await _context.SaveChangesAsync();
             return Ok( m);
         }
+
+        [Authorize(Roles = "Admin,Proprietaire")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
+          
 
             var modele = await _context.Voitures.FindAsync(id);
             if (modele is null) return BadRequest("id voiture n'exist pas ");
+            await _off.removeVoiture(id);
+            await _fav.removeFromAllFavori(id);
+            await _dem.deleteDemandeByVoitureId(id);
             System.IO.File.Delete(modele.ImagePath);
             _context.Voitures.Remove(modele);
             await _context.SaveChangesAsync();

@@ -2,8 +2,10 @@
 using EXAM_PROJET.Models;
 using EXAM_PROJET.Models.User;
 using EXAM_PROJET.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Data;
 
 namespace EXAM_PROJET.Controllers
 {
@@ -45,10 +47,9 @@ namespace EXAM_PROJET.Controllers
                 return Ok(result);
             }
             return Ok(new List<Marque>());
-
-
         }
 
+        [Authorize(Roles = "Admin")]
 
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] MarqueModel model)
@@ -62,6 +63,7 @@ namespace EXAM_PROJET.Controllers
             if (vr is null) { return BadRequest("something went wrong !"); }
             return Ok(vr);
         }
+        [Authorize(Roles = "Admin")]
 
         [HttpPut("id")]
         public async Task<IActionResult> Put([FromBody] MarqueModel productData,  int id)
@@ -77,6 +79,7 @@ namespace EXAM_PROJET.Controllers
             return Ok(t);
 
         }
+        [Authorize(Roles = "Admin")]
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)

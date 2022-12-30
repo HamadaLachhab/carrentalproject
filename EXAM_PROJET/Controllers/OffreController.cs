@@ -1,7 +1,9 @@
 ﻿using EXAM_PROJET.Models;
 using EXAM_PROJET.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 
 namespace EXAM_PROJET.Controllers
 {
@@ -23,6 +25,7 @@ namespace EXAM_PROJET.Controllers
             var modele = await _offreRepository.GetVoitures();
             return Ok(modele);
         }
+        [Authorize(Roles = "Admin,Locataire,Proprietaire")]
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] OffreModel m )
         {
@@ -43,6 +46,8 @@ namespace EXAM_PROJET.Controllers
             }
             return Ok(favori);
         }
+
+        [Authorize(Roles = "Admin,Locataire,Proprietaire")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
@@ -57,6 +62,8 @@ namespace EXAM_PROJET.Controllers
             return Ok(v);
 
         }
+        [Authorize(Roles = "Admin,Locataire,Proprietaire")]
+
         [HttpPut("id")]
         public async Task<IActionResult> Put([FromBody] OffreModel m, int id)
         {

@@ -1,7 +1,9 @@
 ﻿using EXAM_PROJET.Models.User;
 using EXAM_PROJET.Services.Auth;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 
 namespace EXAM_PROJET.Controllers
 {
@@ -48,7 +50,7 @@ namespace EXAM_PROJET.Controllers
 
         }
 
-
+        [Authorize(Roles = "Admin")]
         [HttpPost("addrole")]
         public async Task<IActionResult> AddRoleAsync([FromBody] ManageRoleModel model)
         {
@@ -65,7 +67,7 @@ namespace EXAM_PROJET.Controllers
             return Ok(model);
 
         }
-
+        [Authorize(Roles = "Admin")]
         [HttpPost("removerole")]
         public async Task<IActionResult> RemoveRoleAsync([FromBody] ManageRoleModel model)
         {

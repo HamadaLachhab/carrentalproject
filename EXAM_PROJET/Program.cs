@@ -26,6 +26,8 @@ builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IVoitureRepository, VoitureRepository>();
 builder.Services.AddScoped<IFavoriRepository, FavoriRepository>();
 builder.Services.AddScoped<IOffreRepository, OffreRepository>();
+builder.Services.AddScoped<IDemandeRepository, DemandeRepository>();
+
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;

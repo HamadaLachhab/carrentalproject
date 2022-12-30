@@ -1,9 +1,11 @@
 ﻿using EXAM_PROJET.Models;
 using EXAM_PROJET.Models.User;
 using EXAM_PROJET.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Data;
 
 namespace EXAM_PROJET.Controllers
 {
@@ -26,6 +28,8 @@ namespace EXAM_PROJET.Controllers
 
             return Ok(users);
         }
+        [Authorize(Roles = "Admin,Locataire,Proprietaire")]
+
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(string  id)
         {
@@ -48,6 +52,7 @@ namespace EXAM_PROJET.Controllers
 
 
         }
+        [Authorize(Roles = "Admin,Locataire,Proprietaire")]
 
         [HttpPut("id")]
         public async Task<IActionResult> Put([FromBody] EditUserModel productData, string id)

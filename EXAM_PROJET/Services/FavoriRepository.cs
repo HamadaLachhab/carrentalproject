@@ -65,6 +65,19 @@ namespace EXAM_PROJET.Services
             return mylist.ToList();
           }
 
+        public  async Task<bool> removeFromAllFavori(int voitureId)
+        {
+            var v = await _context.Favoris.Where(f => f.VoitureId == voitureId ).ToListAsync();
+            foreach (var l in v)
+            {
+                _context.Favoris.Remove(l);
+                await _context.SaveChangesAsync();
+
+            }
+
+            return true;
+        }
+
         public async  Task<bool> removeFromFavori(int id, string userId)
         {
             Favori v = await _context.Favoris.Where(f => f.VoitureId == id && f.UserId == userId).FirstOrDefaultAsync();

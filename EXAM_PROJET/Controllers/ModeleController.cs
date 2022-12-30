@@ -1,8 +1,10 @@
 ﻿using EXAM_PROJET.Data;
 using EXAM_PROJET.Models;
 using EXAM_PROJET.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Data;
 
 namespace EXAM_PROJET.Controllers
 {
@@ -46,6 +48,8 @@ namespace EXAM_PROJET.Controllers
 
 
         }
+        [Authorize(Roles = "Admin")]
+
 
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] ModeleModel model)
@@ -64,6 +68,7 @@ namespace EXAM_PROJET.Controllers
             return Ok(vr);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPut("id")]
         public async Task<IActionResult> Put([FromBody] ModeleModel productData, int id)
         {
@@ -82,6 +87,7 @@ namespace EXAM_PROJET.Controllers
             return Ok(t);
 
         }
+        [Authorize(Roles = "Admin")]
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)

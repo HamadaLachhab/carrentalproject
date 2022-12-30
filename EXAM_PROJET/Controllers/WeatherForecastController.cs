@@ -18,7 +18,7 @@ namespace EXAM_PROJET.Controllers
         {
             _logger = logger;
         }
-        [Authorize(Roles ="Proprietaire")]
+        [Authorize(Roles ="Proprietaire,Admin")]
         [HttpGet(Name = "GetWeatherForecast")]
         public IEnumerable<WeatherForecast> Get()
         {
