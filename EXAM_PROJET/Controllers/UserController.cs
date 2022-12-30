@@ -28,7 +28,7 @@ namespace EXAM_PROJET.Controllers
 
             return Ok(users);
         }
-        [Authorize(Roles = "Admin,Locataire,Proprietaire")]
+        
 
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(string  id)
@@ -52,9 +52,9 @@ namespace EXAM_PROJET.Controllers
 
 
         }
-        [Authorize(Roles = "Admin,Locataire,Proprietaire")]
 
-        [HttpPut("id")]
+        [Authorize(Roles = "Admin,Locataire,Proprietaire")]
+        [HttpPut("{id}")]
         public async Task<IActionResult> Put([FromBody] EditUserModel productData, string id)
         {
             if (!ModelState.IsValid)

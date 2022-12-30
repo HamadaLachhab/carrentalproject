@@ -65,7 +65,7 @@ namespace EXAM_PROJET.Controllers
         }
         [Authorize(Roles = "Admin")]
 
-        [HttpPut("id")]
+        [HttpPut("{id}")]
         public async Task<IActionResult> Put([FromBody] MarqueModel productData,  int id)
         {
             if (productData == null || id == 0)

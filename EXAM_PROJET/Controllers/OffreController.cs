@@ -64,7 +64,7 @@ namespace EXAM_PROJET.Controllers
         }
         [Authorize(Roles = "Admin,Locataire,Proprietaire")]
 
-        [HttpPut("id")]
+        [HttpPut("{id}")]
         public async Task<IActionResult> Put([FromBody] OffreModel m, int id)
         {
             if (await _voitureRepository.GetVoitureById(m.voitureId) is null)
