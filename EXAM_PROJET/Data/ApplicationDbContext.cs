@@ -36,5 +36,6 @@ namespace EXAM_PROJET.Data
         public DbSet<Modele> Modeles { get; set; }
         public DbSet<Favori> Favoris { get; set; }
         public DbSet<Demande> Demandes { get; set; } 
+        public DbSet<Offre> Offres { get; set; }
     }
 }

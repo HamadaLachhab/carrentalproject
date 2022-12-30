@@ -50,7 +50,11 @@ namespace EXAM_PROJET.Controllers
         }
         [HttpGet("user/{id}")]
 
-
+        public async Task<IActionResult> getByUserId(string id)
+        {
+            var product = await _voitureRepository.GetVoitureByUserId(id);
+            return Ok(product);
+        }
 
 
 
@@ -140,6 +144,7 @@ namespace EXAM_PROJET.Controllers
 
             var streamImage = new FileStream(pathImage,FileMode.Append);
             image.CopyTo(streamImage);
+
             
             Voiture m = new Voiture() {
                 Annee=model.Annee,
@@ -161,7 +166,7 @@ namespace EXAM_PROJET.Controllers
             await _context.SaveChangesAsync();
             return Ok( m);
         }
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
 
