@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Lee\\Documents\\C# projects\\EXAM_PROJET\\EXAM_PROJET\\EXAM_PROJET.csproj": {}
+    "C:\\Users\\Lee\\Desktop\\Nouveau dossier2\\EXAM_PROJET\\EXAM_PROJET.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Lee\\Documents\\C# projects\\EXAM_PROJET\\EXAM_PROJET\\EXAM_PROJET.csproj": {
+    "C:\\Users\\Lee\\Desktop\\Nouveau dossier2\\EXAM_PROJET\\EXAM_PROJET.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Lee\\Documents\\C# projects\\EXAM_PROJET\\EXAM_PROJET\\EXAM_PROJET.csproj",
+        "projectUniqueName": "C:\\Users\\Lee\\Desktop\\Nouveau dossier2\\EXAM_PROJET\\EXAM_PROJET.csproj",
         "projectName": "EXAM_PROJET",
-        "projectPath": "C:\\Users\\Lee\\Documents\\C# projects\\EXAM_PROJET\\EXAM_PROJET\\EXAM_PROJET.csproj",
+        "projectPath": "C:\\Users\\Lee\\Desktop\\Nouveau dossier2\\EXAM_PROJET\\EXAM_PROJET.csproj",
         "packagesPath": "C:\\Users\\Lee\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Lee\\Documents\\C# projects\\EXAM_PROJET\\EXAM_PROJET\\obj\\",
+        "outputPath": "C:\\Users\\Lee\\Desktop\\Nouveau dossier2\\EXAM_PROJET\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

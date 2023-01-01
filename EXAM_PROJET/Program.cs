@@ -27,6 +27,7 @@ builder.Services.AddScoped<IVoitureRepository, VoitureRepository>();
 builder.Services.AddScoped<IFavoriRepository, FavoriRepository>();
 builder.Services.AddScoped<IOffreRepository, OffreRepository>();
 builder.Services.AddScoped<IDemandeRepository, DemandeRepository>();
+builder.Services.AddScoped<ICommentRepository, CommentRepository>();
 
 builder.Services.AddAuthentication(options =>
 {

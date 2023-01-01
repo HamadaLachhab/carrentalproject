@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "P+5YevnIVSXx6B2z+g3FVonTnVStkYSI+1PDMLpIMIE=",
+  "Hash": "CJIgQU7rkBhhIieWfWtXvuVcisxBoDtQQ+seo5XmR/E=",
   "Source": "EXAM_PROJET",
   "BasePath": "_content/EXAM_PROJET",
   "Mode": "Default",
@@ -10,17 +10,34 @@
     {
       "Name": "EXAM_PROJET\\wwwroot",
       "Source": "EXAM_PROJET",
-      "ContentRoot": "C:\\Users\\Lee\\Documents\\C# projects\\EXAM_PROJET\\EXAM_PROJET\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lee\\Desktop\\Nouveau dossier2\\EXAM_PROJET\\wwwroot\\",
       "BasePath": "_content/EXAM_PROJET",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\Lee\\Documents\\C# projects\\EXAM_PROJET\\EXAM_PROJET\\wwwroot\\images\\4.jpg",
+      "Identity": "C:\\Users\\Lee\\Desktop\\Nouveau dossier2\\EXAM_PROJET\\wwwroot\\images\\2.jpg",
       "SourceId": "EXAM_PROJET",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Lee\\Documents\\C# projects\\EXAM_PROJET\\EXAM_PROJET\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lee\\Desktop\\Nouveau dossier2\\EXAM_PROJET\\wwwroot\\",
+      "BasePath": "_content/EXAM_PROJET",
+      "RelativePath": "images/2.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\2.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Lee\\Desktop\\Nouveau dossier2\\EXAM_PROJET\\wwwroot\\images\\4.jpg",
+      "SourceId": "EXAM_PROJET",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Lee\\Desktop\\Nouveau dossier2\\EXAM_PROJET\\wwwroot\\",
       "BasePath": "_content/EXAM_PROJET",
       "RelativePath": "images/4.jpg",
       "AssetKind": "All",
@@ -34,10 +51,10 @@
       "OriginalItemSpec": "wwwroot\\images\\4.jpg"
     },
     {
-      "Identity": "C:\\Users\\Lee\\Documents\\C# projects\\EXAM_PROJET\\EXAM_PROJET\\wwwroot\\images\\5_reconnection_et_voire_privilege.jpg",
+      "Identity": "C:\\Users\\Lee\\Desktop\\Nouveau dossier2\\EXAM_PROJET\\wwwroot\\images\\5_reconnection_et_voire_privilege.jpg",
       "SourceId": "EXAM_PROJET",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Lee\\Documents\\C# projects\\EXAM_PROJET\\EXAM_PROJET\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lee\\Desktop\\Nouveau dossier2\\EXAM_PROJET\\wwwroot\\",
       "BasePath": "_content/EXAM_PROJET",
       "RelativePath": "images/5_reconnection_et_voire_privilege.jpg",
       "AssetKind": "All",
@@ -51,10 +68,10 @@
       "OriginalItemSpec": "wwwroot\\images\\5_reconnection_et_voire_privilege.jpg"
     },
     {
-      "Identity": "C:\\Users\\Lee\\Documents\\C# projects\\EXAM_PROJET\\EXAM_PROJET\\wwwroot\\images\\logo.jpg",
+      "Identity": "C:\\Users\\Lee\\Desktop\\Nouveau dossier2\\EXAM_PROJET\\wwwroot\\images\\logo.jpg",
       "SourceId": "EXAM_PROJET",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Lee\\Documents\\C# projects\\EXAM_PROJET\\EXAM_PROJET\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lee\\Desktop\\Nouveau dossier2\\EXAM_PROJET\\wwwroot\\",
       "BasePath": "_content/EXAM_PROJET",
       "RelativePath": "images/logo.jpg",
       "AssetKind": "All",
@@ -68,10 +85,10 @@
       "OriginalItemSpec": "wwwroot\\images\\logo.jpg"
     },
     {
-      "Identity": "C:\\Users\\Lee\\Documents\\C# projects\\EXAM_PROJET\\EXAM_PROJET\\wwwroot\\images\\marnissi.png",
+      "Identity": "C:\\Users\\Lee\\Desktop\\Nouveau dossier2\\EXAM_PROJET\\wwwroot\\images\\marnissi.png",
       "SourceId": "EXAM_PROJET",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Lee\\Documents\\C# projects\\EXAM_PROJET\\EXAM_PROJET\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lee\\Desktop\\Nouveau dossier2\\EXAM_PROJET\\wwwroot\\",
       "BasePath": "_content/EXAM_PROJET",
       "RelativePath": "images/marnissi.png",
       "AssetKind": "All",
@@ -85,10 +102,10 @@
       "OriginalItemSpec": "wwwroot\\images\\marnissi.png"
     },
     {
-      "Identity": "C:\\Users\\Lee\\Documents\\C# projects\\EXAM_PROJET\\EXAM_PROJET\\wwwroot\\images\\user_1.jpg",
+      "Identity": "C:\\Users\\Lee\\Desktop\\Nouveau dossier2\\EXAM_PROJET\\wwwroot\\images\\user_1.jpg",
       "SourceId": "EXAM_PROJET",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Lee\\Documents\\C# projects\\EXAM_PROJET\\EXAM_PROJET\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lee\\Desktop\\Nouveau dossier2\\EXAM_PROJET\\wwwroot\\",
       "BasePath": "_content/EXAM_PROJET",
       "RelativePath": "images/user_1.jpg",
       "AssetKind": "All",
